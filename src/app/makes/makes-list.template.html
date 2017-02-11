@@ -1,0 +1,48 @@
+<div id="movie-detail" class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">
+        <h1 style="margin: 0; display: inline-block;" *ngIf="!isInSearchMode">
+          Makes
+        </h1>
+        <h1 style="margin: 0; display: inline-block;" *ngIf="isInSearchMode">
+          Makes ({{ searchPhrase }})
+        </h1>
+      </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div *ngFor="let make of makes; let i = index" (click)="onSelect(make)">
+          <div class="box" *ngIf="i % 3 == 0">
+            <div class="thumbnail">
+              <div class="caption">
+                <h3>{{ make.Value }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div *ngFor="let make of makes; let i = index" (click)="onSelect(make)">
+          <div class="box" *ngIf="i % 3 == 1">
+            <div class="thumbnail">
+              <div class="caption">
+                <h3>{{ make.Value }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div *ngFor="let make of makes; let i = index" (click)="onSelect(make)">
+          <div class="box" *ngIf="i % 3 == 2">
+            <div class="thumbnail">
+              <div class="caption">
+                <h3>{{ make.Value }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

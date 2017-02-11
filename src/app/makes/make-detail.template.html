@@ -1,0 +1,16 @@
+<div *ngIf="make" id="movie-detail" class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{ make.Value }}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let car of cars; let i = index" (click)="onSelect(car.Id)" style="cursor: pointer">
+                        <b>{{ car.Lot }}</b> {{ car.Year }} {{ car.Make.Value }} {{ car.Model.Value }} ({{ car.EngineType }})
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
