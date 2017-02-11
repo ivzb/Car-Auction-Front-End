@@ -2,6 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import * as moment from 'moment';
 
 import { slideInDownAnimation } from '../animations';
 
@@ -37,8 +38,12 @@ export class MakeDetailComponent implements OnInit {
       this.getMake(id);
     }
 
-    onSelect(carId: number) {
+    public onSelect(carId: number) {
         this.router.navigate(['/car', carId]);
+    }
+
+    public parseDate(date: string): string {
+        return moment(date).format('D MMM YYYY');
     }
 
     private getMake(id: number) {

@@ -2,6 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import * as moment from 'moment';
 
 import { slideInDownAnimation } from '../animations';
 
@@ -33,6 +34,10 @@ export class CarDetailComponent implements OnInit {
       let id = +this.route.snapshot.params['id'];
 
       this.getCar(id);
+    }
+
+    public parseDate(date: string): string {
+        return moment(date).format('D MMM YYYY');
     }
 
     private getCar(id: number) {
