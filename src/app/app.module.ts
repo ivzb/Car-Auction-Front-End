@@ -1,6 +1,7 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
+import { CalendarModule } from 'angular-calendar';
 
 import { AppComponent }     from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +21,8 @@ import { SimpleNotificationsModule, PushNotificationsModule } from 'angular2-not
     MakesModule,
     AppRoutingModule,
     SimpleNotificationsModule,
-    PushNotificationsModule
+    PushNotificationsModule,
+    CalendarModule.forRoot()
   ],
   declarations: [
     AppComponent,
