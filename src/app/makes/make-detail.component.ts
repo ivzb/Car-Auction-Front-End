@@ -24,8 +24,10 @@ export class MakeDetailComponent implements OnInit {
     
     public make: Make;
     public cars: Car[];
+    private id: number;
 
-    date: DateModel;
+    from: DateModel;
+    to: DateModel;
     options: DatePickerOptions;
 
     constructor(
@@ -35,12 +37,30 @@ export class MakeDetailComponent implements OnInit {
     ) {
         loader.start();
         this.options = new DatePickerOptions();
+        this.options.autoApply = true;
+        this.options.maxDate = new Date();
     }
 
     public ngOnInit() {
-      let id = +this.route.snapshot.params['id'];
+      this.id = +this.route.snapshot.params['id'];
 
-      this.getMake(id);
+      this.getMake(null, null);
+    }
+
+    public onFromChanged(event: any)
+    {
+        let fromDate = event;
+        let toDate = this.to;
+
+        this.getMake(fromDate, toDate)
+    }
+    
+    public onToChanged(event: any)
+    {
+        let fromDate = this.from;
+        let toDate = event;
+
+        this.getMake(fromDate, toDate)
     }
 
     public onSelect(carId: number) {
@@ -51,24 +71,53 @@ export class MakeDetailComponent implements OnInit {
         return moment(date).format('D MMM YYYY');
     }
 
-    private getMake(id: number) {
+    private getMake(from: any, to: any) {
+        let makeId = this.id;
+
         this.service
-            .getMake(id)
+            .getMake(makeId)
             .then(make => {
               this.make = make;
               loader.done();
               loader.start();
 
-              this.service
-                .getMakeCars(id)
+              if (from == null && to == null) {
+                this.service
+                .getMakeCars(makeId)
                 .then(cars => {
                     this.cars = cars;
                     loader.done();
                 });
+              } else if (from != null && to != null) {
+                this.service
+                    .getMakeCarsAllPeriod(makeId, this.formatMomentDateForOData(from), this.formatMomentDateForOData(to))
+                    .then(cars => {
+                        this.cars = cars;
+                        loader.done();
+                    });
+              } else if(from != null && to == null) {
+                this.service
+                    .getMakeCarsFromPeriod(makeId, this.formatMomentDateForOData(from))
+                    .then(cars => {
+                        this.cars = cars;
+                        loader.done();
+                    });
+              } else if (from == null && to != null) {
+                this.service
+                    .getMakeCarsToPeriod(makeId, this.formatMomentDateForOData(to))
+                    .then(cars => {
+                        this.cars = cars;
+                        loader.done();
+                    });
+              }
             })
             .catch(error => {
                 //this.error = error
                 loader.done();
             });
+    }
+
+    private formatMomentDateForOData(date: any): string {
+        return '\'' + date.momentObj.toISOString() + '\'';
     }
 }

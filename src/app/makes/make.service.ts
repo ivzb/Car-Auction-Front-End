@@ -34,6 +34,28 @@ export class MakeService {
       .then(response => response.json().value as Car[])
       .catch(this.handleError);
   }
+  
+  public getMakeCarsFromPeriod(id: number, from: string): Promise<Car[]> {
+    return this.http.get(this.makesServiceUrl + '(' + id + ')/Cars?$orderby=Id desc&$expand=Model, Make, Category&$filter=CreatedOn ge DateTime' + from)
+      .toPromise()
+      .then(response => response.json().value as Car[])
+      .catch(this.handleError);
+  }
+  
+  public getMakeCarsToPeriod(id: number, to: string): Promise<Car[]> {
+    return this.http.get(this.makesServiceUrl + '(' + id + ')/Cars?$orderby=Id desc&$expand=Model, Make, Category&$filter=CreatedOn le DateTime' + to)
+      .toPromise()
+      .then(response => response.json().value as Car[])
+      .catch(this.handleError);
+  }
+
+  
+  public getMakeCarsAllPeriod(id: number, from: string, to: string): Promise<Car[]> {
+    return this.http.get(this.makesServiceUrl + '(' + id + ')/Cars?$orderby=Id desc&$expand=Model, Make, Category&$filter=CreatedOn ge DateTime' + from + ' and CreatedOn le DateTime' + to)
+      .toPromise()
+      .then(response => response.json().value as Car[])
+      .catch(this.handleError);
+  }
 
   private handleError(error: any): Promise<any> {
         console.log(error);
