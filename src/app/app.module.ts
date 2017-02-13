@@ -1,7 +1,7 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
-import { CalendarModule } from 'angular-calendar';
+import { DatePickerModule } from 'ng2-datepicker';
 
 import { AppComponent }     from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,8 +11,6 @@ import { MakesModule }       from './makes/makes.module';
 
 import { PageNotFoundComponent } from './page-not-found.component';
 
-import { SimpleNotificationsModule, PushNotificationsModule } from 'angular2-notifications';
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -20,9 +18,7 @@ import { SimpleNotificationsModule, PushNotificationsModule } from 'angular2-not
     CarsModule,
     MakesModule,
     AppRoutingModule,
-    SimpleNotificationsModule,
-    PushNotificationsModule,
-    CalendarModule.forRoot()
+    DatePickerModule
   ],
   declarations: [
     AppComponent,

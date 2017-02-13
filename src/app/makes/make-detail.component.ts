@@ -1,31 +1,8 @@
 import 'rxjs/add/operator/switchMap';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import * as moment from 'moment';
-
-import {
-  Component,
-  OnChanges,
-  Input,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef,
-  OnInit,
-  HostBinding, 
-  OnDestroy,
-  LOCALE_ID,
-  Inject
-} from '@angular/core';
-import {
-  CalendarEvent,
-  WeekDay,
-  MonthView,
-  getWeekViewHeader,
-  getMonthView,
-  MonthViewDay
-} from 'calendar-utils';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 
 import { slideInDownAnimation } from '../animations';
 

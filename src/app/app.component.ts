@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,15 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class AppComponent {
 
-    constructor(private route: ActivatedRoute, private router: Router) { }
+    date: DateModel;
+  options: DatePickerOptions;
+
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router
+    ) {
+        this.options = new DatePickerOptions();
+    }
 
     public notificationOptions = {
         position: ["bottom", "right"],
