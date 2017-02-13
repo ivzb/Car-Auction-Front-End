@@ -3,6 +3,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import * as moment from 'moment';
+import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 
 import { slideInDownAnimation } from '../animations';
 
@@ -24,12 +25,16 @@ export class MakeDetailComponent implements OnInit {
     public make: Make;
     public cars: Car[];
 
+    date: DateModel;
+    options: DatePickerOptions;
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private service: MakeService
     ) {
         loader.start();
+        this.options = new DatePickerOptions();
     }
 
     public ngOnInit() {
