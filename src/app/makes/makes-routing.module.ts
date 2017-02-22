@@ -1,6 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+// components
 import { MakesListComponent }  from './makes-list.component';
 import { MakeDetailComponent } from './make-detail.component';
 

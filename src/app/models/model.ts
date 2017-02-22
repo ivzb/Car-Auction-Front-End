@@ -1,4 +1,5 @@
-export class Model {
-    public Id: number;
-    public Value: string;
+import { ValueModel } from '../base/value.model'
+
+export class Model extends ValueModel {
+    
 }

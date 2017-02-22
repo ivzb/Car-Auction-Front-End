@@ -1,5 +1,5 @@
-export class Image {
-    public Id: number;
-    public Url: number;
+import { UrlModel } from '../base/url.model'
+
+export class Image extends UrlModel {
     public CarId: number;
 }

@@ -1,19 +1,18 @@
-import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import * as moment from 'moment';
 import { DatePickerOptions, DateModel } from 'ng2-datepicker';
-
 import { slideInDownAnimation } from '../animations';
+import 'rxjs/add/operator/pairwise';
+import 'rxjs/add/operator/switchMap';
 
-import { MakeService } from './make.service';
+// models
 import { Make } from './make';
 import { Car } from '../cars/car';
 
-import 'rxjs/add/operator/pairwise';
-
-declare var loader: any;
+// services
+import { MakeService } from './make.service';
 
 @Component({
   templateUrl: './make-detail.template.html',
@@ -26,19 +25,17 @@ export class MakeDetailComponent implements OnInit {
     public cars: Car[];
     private id: number;
 
-    from: DateModel;
-    to: DateModel;
-    options: DatePickerOptions;
+    public from: DateModel;
+    public to: DateModel;
+    public options: DatePickerOptions;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private service: MakeService
     ) {
-        loader.start();
         this.options = new DatePickerOptions();
         this.options.autoApply = true;
-        this.options.maxDate = new Date();
     }
 
     public ngOnInit() {
@@ -78,42 +75,35 @@ export class MakeDetailComponent implements OnInit {
             .getMake(makeId)
             .then(make => {
               this.make = make;
-              loader.done();
-              loader.start();
 
               if (from == null && to == null) {
                 this.service
                 .getMakeCars(makeId)
                 .then(cars => {
                     this.cars = cars;
-                    loader.done();
                 });
               } else if (from != null && to != null) {
                 this.service
                     .getMakeCarsAllPeriod(makeId, this.formatMomentDateForOData(from), this.formatMomentDateForOData(to))
                     .then(cars => {
                         this.cars = cars;
-                        loader.done();
                     });
               } else if(from != null && to == null) {
                 this.service
                     .getMakeCarsFromPeriod(makeId, this.formatMomentDateForOData(from))
                     .then(cars => {
                         this.cars = cars;
-                        loader.done();
                     });
               } else if (from == null && to != null) {
                 this.service
                     .getMakeCarsToPeriod(makeId, this.formatMomentDateForOData(to))
                     .then(cars => {
                         this.cars = cars;
-                        loader.done();
                     });
               }
             })
             .catch(error => {
                 //this.error = error
-                loader.done();
             });
     }
 

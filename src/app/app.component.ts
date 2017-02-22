@@ -13,13 +13,4 @@ export class AppComponent {
     ) {
         
     }
-
-    public notificationOptions = {
-        position: ["bottom", "right"],
-        timeOut: 5000,
-        showProgressBar: true,
-        pauseOnHover: true,
-        lastOnBottom: true,
-        clickToClose: true,
-    }
 }

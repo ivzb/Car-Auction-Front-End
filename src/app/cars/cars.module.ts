@@ -3,11 +3,13 @@ import { CommonModule }   from '@angular/common';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule, JsonpModule }     from '@angular/http';
 
-//import { AchievementsListComponent }  from './achievements-list.component';
+// components
 import { CarDetailComponent } from './car-detail.component';
-//import { CreateAchievementComponent } from './create-achievement.component';
 
+// services
 import { CarService } from './car.service';
+
+// modules
 import { CarsRoutingModule } from './cars-routing.module';
 
 @NgModule({
@@ -19,9 +21,7 @@ import { CarsRoutingModule } from './cars-routing.module';
     JsonpModule
   ],
   declarations: [
-    //AchievementsListComponent,
     CarDetailComponent,
-    //CreateAchievementComponent
   ],
   providers: [
     CarService

@@ -1,4 +1,5 @@
-export class Category {
-    public Id: number;
-    public Value: string;
+import { ValueModel } from '../base/value.model'
+
+export class Category extends ValueModel {
+    
 }

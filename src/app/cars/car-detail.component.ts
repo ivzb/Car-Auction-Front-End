@@ -3,16 +3,14 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import * as moment from 'moment';
-
 import { slideInDownAnimation } from '../animations';
-
-import { CarService } from './car.service';
-import { Car } from './car';
-import { Throphey } from './throphey';
-
 import 'rxjs/add/operator/pairwise';
 
-declare var loader: any;
+// models
+import { Car } from './car';
+
+// services
+import { CarService } from './car.service';
 
 @Component({
   templateUrl: './car-detail.template.html',
@@ -27,7 +25,6 @@ export class CarDetailComponent implements OnInit {
         private router: Router,
         private service: CarService
     ) {
-        loader.start();
     }
 
     public ngOnInit() {
@@ -45,11 +42,9 @@ export class CarDetailComponent implements OnInit {
             .getCar(id)
             .then(car => {
               this.car = car;
-              loader.done();
             })
             .catch(error => {
                 //this.error = error
-                loader.done();
             });
     }
 }

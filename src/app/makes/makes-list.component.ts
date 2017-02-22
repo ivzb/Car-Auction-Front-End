@@ -6,8 +6,6 @@ import { Observable } from 'rxjs/Observable';
 import { MakeService } from './make.service';
 import { Make } from './make';
 
-declare var loader: any;
-
 @Component({
   templateUrl: './makes-list.template.html'
 })
@@ -22,10 +20,7 @@ export class MakesListComponent {
     ) {
         this.router.events.subscribe((event: Event) => {
             if (event instanceof NavigationEnd) {
-                loader.start();
-
                 window.scrollTo(0, 0);
-
                 this.getMakes();
             }
         });
@@ -40,11 +35,10 @@ export class MakesListComponent {
             .getMakes()
             .then(response => {
                 this.makes = response;
-                loader.done();
             })
             .catch(error => {
                 //this.error = error;
-                loader.done();
-            }); // TODO: Display error message
+                // TODO: Display error message
+            });
     }
 }
