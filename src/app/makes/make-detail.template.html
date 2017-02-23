@@ -20,7 +20,9 @@
             <div class="col-md-12">
                 <ul class="list-group" *ngIf="cars">
                     <li class="list-group-item" *ngFor="let car of cars; let i = index" (click)="onSelect(car.Id)" style="cursor: pointer">
-                        ({{ parseDate(car.CreatedOn) }}) <b>{{ car.Year }}</b> {{ car.Make.Value }} {{ car.Model.Value }} ({{ car.EngineType }})
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i> {{ parseDate(car.CreatedOn) }}
+                        <b>{{ car.Title }}</b>
+                        (<i class="fa fa-cogs" aria-hidden="true"></i> {{ car.Engine }} cc, {{ car.Fuel.Value }})
                     </li>
                 </ul>
                 

@@ -32,7 +32,7 @@ export class MakeService extends BaseService {
     }
 
     public getMakeCars(id: number): Promise<Car[]> {
-      return this.http.get(this.buildServiceUrl('Makes(' + id + ')/Cars?$orderby=Id desc&$expand=Model, Make, Category'))
+      return this.http.get(this.buildServiceUrl('Makes(' + id + ')/Cars?$orderby=AuctionOn desc&$expand=Fuel'))
         .toPromise()
         .then(response => response.json().value as Car[])
         .catch(this.handleError);
