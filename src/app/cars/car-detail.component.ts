@@ -3,7 +3,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import * as moment from 'moment';
-import { slideInDownAnimation } from '../animations';
+
 import 'rxjs/add/operator/pairwise';
 
 // models
@@ -13,8 +13,7 @@ import { Car } from './car';
 import { CarService } from './car.service';
 
 @Component({
-  templateUrl: './car-detail.template.html',
-  animations: [ slideInDownAnimation ],
+  templateUrl: './car-detail.template.html'
 })
 export class CarDetailComponent implements OnInit {
     

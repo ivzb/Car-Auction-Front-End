@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import * as moment from 'moment';
-import { slideInDownAnimation } from '../animations';
+
 import 'rxjs/add/operator/pairwise';
 import 'rxjs/add/operator/switchMap';
 
@@ -14,8 +14,7 @@ import { Car } from '../cars/car';
 import { MakeService } from './make.service';
 
 @Component({
-  templateUrl: './make-detail.template.html',
-  animations: [ slideInDownAnimation ],
+  templateUrl: './make-detail.template.html'
 })
 
 export class MakeDetailComponent implements OnInit {

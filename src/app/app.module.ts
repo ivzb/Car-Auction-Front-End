@@ -1,28 +1,31 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { NgModule }       from '@angular/core'
+import { BrowserModule }  from '@angular/platform-browser'
 
-import { AppComponent }     from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+// components
+import { AppComponent } from './app.component'
+import { NavbarComponent } from './navbar/navbar.component'
+import { PageNotFoundComponent } from './page-not-found.component'
 
-import { CarsModule }  from './cars/cars.module';
-import { MakesModule } from './makes/makes.module';
-
-import { PageNotFoundComponent } from './page-not-found.component';
+// modules
+import { AppRoutingModule } from './app-routing.module'
+import { CarsModule }  from './cars/cars.module'
+import { MakesModule } from './makes/makes.module'
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule,
     CarsModule,
     MakesModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
+    NavbarComponent,
+    PageNotFoundComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [
+    AppComponent
+  ]
 })
 
 export class AppModule { }
