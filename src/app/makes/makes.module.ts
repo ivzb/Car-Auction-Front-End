@@ -2,7 +2,6 @@ import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { DatePickerModule } from 'ng2-datepicker';
 
 // components
 import { MakesListComponent }  from './makes-list.component';
@@ -21,7 +20,6 @@ import { MakesRoutingModule } from './makes-routing.module';
     MakesRoutingModule,
     HttpModule,
     JsonpModule,
-    DatePickerModule
   ],
   declarations: [
     MakesListComponent,

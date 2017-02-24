@@ -2,7 +2,6 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import * as moment from 'moment';
-import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 import { slideInDownAnimation } from '../animations';
 import 'rxjs/add/operator/pairwise';
 import 'rxjs/add/operator/switchMap';
@@ -25,17 +24,11 @@ export class MakeDetailComponent implements OnInit {
     public cars: Car[];
     private id: number;
 
-    public from: DateModel;
-    public to: DateModel;
-    public options: DatePickerOptions;
-
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private service: MakeService
     ) {
-        this.options = new DatePickerOptions();
-        this.options.autoApply = true;
     }
 
     public ngOnInit() {
@@ -47,14 +40,14 @@ export class MakeDetailComponent implements OnInit {
     public onFromChanged(event: any)
     {
         let fromDate = event;
-        let toDate = this.to;
+        let toDate = null//this.to;
 
         this.getMake(fromDate, toDate)
     }
     
     public onToChanged(event: any)
     {
-        let fromDate = this.from;
+        let fromDate = null//this.from;
         let toDate = event;
 
         this.getMake(fromDate, toDate)
