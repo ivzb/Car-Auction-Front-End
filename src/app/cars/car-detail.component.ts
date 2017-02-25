@@ -39,11 +39,6 @@ export class CarDetailComponent implements OnInit {
     private getCar(id: number) {
         this.service
             .getCar(id)
-            .then(car => {
-              this.car = car;
-            })
-            .catch(error => {
-                //this.error = error
-            });
+            .subscribe(car => this.car = car)
     }
 }

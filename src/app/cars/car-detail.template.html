@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        Auction date: <b>{{ parseDate(car.CreatedOn) }}</b>
+                        Auction date: <b>{{ parseDate(car.AuctionOn) }}</b>
                     </li>
                     <li class="list-group-item">
                         Year: <b>{{ car.Year }}</b>
@@ -31,7 +31,7 @@
                         Bids:
                     </li>
                     <li class="list-group-item" *ngFor="let bid of car.Bids; let i = index">
-                        <b>£{{ bid.Value }}</b> - {{ bid.Location }}
+                        <b>£{{ bid.Cost }}</b>
                     </li>
                     <li class="list-group-item">
                         Images:

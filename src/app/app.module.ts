@@ -6,6 +6,9 @@ import { AppComponent } from './app.component'
 import { NavbarComponent } from './navbar/navbar.component'
 import { PageNotFoundComponent } from './page-not-found.component'
 
+// services
+import { BaseService } from './base/base.service';
+
 // modules
 import { AppRoutingModule } from './app-routing.module'
 import { CarsModule }  from './cars/cars.module'
@@ -16,12 +19,15 @@ import { MakesModule } from './makes/makes.module'
     BrowserModule,
     CarsModule,
     MakesModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
     NavbarComponent,
     PageNotFoundComponent
+  ],
+  providers: [
+    BaseService
   ],
   bootstrap: [
     AppComponent

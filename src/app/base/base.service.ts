@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class BaseService {
 
-  private serviceUrl: string = 'http://localhost:13165/odata/';
+  private serviceUrl: string = 'http://localhost:13165/odata';
   private headers: Headers = new Headers({
     'If-Modified-Since': 'Mon, 26 Jul 1997 05:00:00 GMT',
     'Cache-Control': 'no-cache',
@@ -22,7 +22,7 @@ export class BaseService {
         { headers: this.headers })
       .map(this.checkForErrors)
       .catch(error => Observable.throw(error))
-      .map(this.getJson)
+      .map(this.getResult)
   }
 
   post(url: string, data) {
@@ -32,7 +32,7 @@ export class BaseService {
         { headers: this.headers })
       .map(this.checkForErrors)
       .catch(error => Observable.throw(error))
-      .map(this.getJson)
+      .map(this.getResult)
   }
 
   delete(url: string) {
@@ -41,7 +41,7 @@ export class BaseService {
         { headers: this.headers })
       .map(this.checkForErrors)
       .catch(error => Observable.throw(error))
-      .map(this.getJson)
+      .map(this.getResult)
   }
 
   private checkForErrors(response: Response) {
@@ -55,7 +55,13 @@ export class BaseService {
     }
   }
 
-  private getJson(resp: Response) {
-    return resp.json()
+  private getResult(response: Response) {
+    let result = response.json()
+
+    if (result.value && Array.isArray(result.value)) {
+      result = result['value']
+    }
+
+    return result;
   }
 }

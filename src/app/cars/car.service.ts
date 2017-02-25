@@ -1,24 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Http, Headers, Response, RequestOptions } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Injectable } from '@angular/core'
 
 // models
-import { Car } from './car';
+import { Car } from '../cars/car'
 
 // services
-import { BaseService } from '../base/base.service';
+import { BaseService } from '../base/base.service'
 
 @Injectable()
-export class CarService extends BaseService {
-    constructor(private http: Http) {
-        super();
-    }
+export class CarService {
+  private url: string = '/Cars'
 
-    getCar(id: number): Promise<Car> {
-        return this.http.get(super.buildServiceUrl('Cars(' + id + ')?$expand=Bids, Images, Category, Color, Currency, Fuel, Location, Make, Model, Transmission'))
-            .toPromise()
-            .then(response => response.json() as Car)
-            .catch(super.handleError);
-    }
+  constructor(private baseService: BaseService) { }
+
+  getCar(id: number) {
+    return this.baseService.get(`${ this.url }(${ id })?$expand=Bids, Images, Category, Color, Currency, Fuel, Location, Make, Model, Transmission`)
+  }
 }

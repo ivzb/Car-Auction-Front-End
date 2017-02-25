@@ -33,23 +33,7 @@ export class MakeDetailComponent implements OnInit {
     public ngOnInit() {
       this.id = +this.route.snapshot.params['id'];
 
-      this.getMake(null, null);
-    }
-
-    public onFromChanged(event: any)
-    {
-        let fromDate = event;
-        let toDate = null//this.to;
-
-        this.getMake(fromDate, toDate)
-    }
-    
-    public onToChanged(event: any)
-    {
-        let fromDate = null//this.from;
-        let toDate = event;
-
-        this.getMake(fromDate, toDate)
+      this.getMake(null, null)
     }
 
     public onSelect(carId: number) {
@@ -60,43 +44,16 @@ export class MakeDetailComponent implements OnInit {
         return moment(date).format('D MMM YYYY');
     }
 
-    private getMake(from: any, to: any) {
+    private getMake(from: string, to: string) {
         let makeId = this.id;
 
         this.service
             .getMake(makeId)
-            .then(make => {
-              this.make = make;
-
-              if (from == null && to == null) {
-                this.service
+            .subscribe(make => {
+              this.make = make
+              this.service
                 .getMakeCars(makeId)
-                .then(cars => {
-                    this.cars = cars;
-                });
-              } else if (from != null && to != null) {
-                this.service
-                    .getMakeCarsAllPeriod(makeId, this.formatMomentDateForOData(from), this.formatMomentDateForOData(to))
-                    .then(cars => {
-                        this.cars = cars;
-                    });
-              } else if(from != null && to == null) {
-                this.service
-                    .getMakeCarsFromPeriod(makeId, this.formatMomentDateForOData(from))
-                    .then(cars => {
-                        this.cars = cars;
-                    });
-              } else if (from == null && to != null) {
-                this.service
-                    .getMakeCarsToPeriod(makeId, this.formatMomentDateForOData(to))
-                    .then(cars => {
-                        this.cars = cars;
-                    });
-              }
-            })
-            .catch(error => {
-                //this.error = error
-            });
+                .subscribe(cars => this.cars = cars) })
     }
 
     private formatMomentDateForOData(date: any): string {

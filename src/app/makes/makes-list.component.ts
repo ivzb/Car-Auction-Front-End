@@ -33,12 +33,6 @@ export class MakesListComponent {
     private getMakes() {
         this.service
             .getMakes()
-            .then(response => {
-                this.makes = response;
-            })
-            .catch(error => {
-                //this.error = error;
-                // TODO: Display error message
-            });
+            .subscribe(makes => this.makes = makes)
     }
 }
