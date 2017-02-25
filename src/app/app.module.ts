@@ -10,7 +10,7 @@ import { PageNotFoundComponent } from './page-not-found.component'
 import { BaseService } from './base/base.service';
 
 // modules
-import { AppRoutingModule } from './app-routing.module'
+import { AppRouting } from './app.routing'
 import { CarsModule }  from './cars/cars.module'
 import { MakesModule } from './makes/makes.module'
 
@@ -19,7 +19,7 @@ import { MakesModule } from './makes/makes.module'
     BrowserModule,
     CarsModule,
     MakesModule,
-    AppRoutingModule
+    AppRouting
   ],
   declarations: [
     AppComponent,
