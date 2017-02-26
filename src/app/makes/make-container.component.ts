@@ -3,8 +3,11 @@ import { Router, ActivatedRoute, Params, Event, NavigationEnd } from '@angular/r
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 
-import { MakeService } from './make.service';
+// models
 import { Make } from './make';
+
+// services
+import { MakeService } from './make.service';
 
 @Component({
   selector: 'make-container',
@@ -17,47 +20,27 @@ import { Make } from './make';
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-4">
-                <div *ngFor="let make of makes; let i = index" [routerLink]="['make/' + make.Id]">
-                    <div class="box" *ngIf="i % 3 == 0">
-                        <div class="thumbnail">
+            <div *ngFor="let make of makes" [routerLink]="['/make/' + make.Id]">
+                <div class="col-md-4 box">
+                    <div class="thumbnail">
                         <div class="caption">
                             <h3>{{ make.Value }}</h3>
                         </div>
-                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div *ngFor="let make of makes; let i = index" (click)="onSelect(make)">
-                <div class="box" *ngIf="i % 3 == 1">
-                    <div class="thumbnail">
-                    <div class="caption">
-                        <h3>{{ make.Value }}</h3>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div *ngFor="let make of makes; let i = index" (click)="onSelect(make)">
-                <div class="box" *ngIf="i % 3 == 2">
-                    <div class="thumbnail">
-                    <div class="caption">
-                        <h3>{{ make.Value }}</h3>
-                    </div>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
     </div>`,
-  styles: [
-      `.panel-title {
+  styles: [`
+      .panel {
+        margin: 20px 30px;
+      }
+
+      .panel-title {
           margin: 0;
           display: inline-block;
-      }`
-  ]
+      }
+    `]
 })
 
 export class MakeContainerComponent implements OnInit {
@@ -73,9 +56,5 @@ export class MakeContainerComponent implements OnInit {
         this.service
             .getMakes()
             .subscribe(makes => this.makes = makes)
-    }
-
-    onSelect(make: Make) {
-        this.router.navigate(['/make', make.Id])
     }
 }
