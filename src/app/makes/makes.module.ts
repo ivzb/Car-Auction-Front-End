@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms'
 import { HttpModule, JsonpModule } from '@angular/http'
 
 // components
-import { MakeContainerComponent } from './make-container.component'
+import { MakesContainerComponent } from './makes-container.component'
+import { MakeCardComponent } from './make-card.component'
 import { MakeDetailComponent } from './make-detail.component'
 
 // services
@@ -22,11 +23,12 @@ import { MakesRouting } from './makes.routing'
     JsonpModule
   ],
   declarations: [
-    MakeContainerComponent,
+    MakesContainerComponent,
+    MakeCardComponent,
     MakeDetailComponent
   ],
   providers: [
     MakeService
   ]
 })
-export class MakesModule {}
+export class MakesModule { }

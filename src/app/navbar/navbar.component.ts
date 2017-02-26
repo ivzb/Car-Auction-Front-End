@@ -14,7 +14,7 @@ import { Component } from '@angular/core'
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" routerLink="/makes" style="padding: 5px;">
-            <img id="daniauto-logo" alt="Brand" src="logo.png" width="40px">
+            <img id="daniauto-logo" alt="Brand" src="/assets/logo.png" width="40px">
         </a>
         <a class="navbar-brand" routerLink="/makes">Dani Sarul Auto Copart Informational Application</a>
         </div>
