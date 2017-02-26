@@ -62,6 +62,6 @@ export class BaseService {
       result = result['value']
     }
 
-    return result;
+    return result
   }
 }
