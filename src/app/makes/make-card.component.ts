@@ -14,7 +14,11 @@ import {
         </div>
     </div>
   `,
-  styles: []
+  styles: [`
+    .caption {
+      cursor: pointer;
+    }
+  `]
 })
 export class MakeCardComponent {
   @Input() make

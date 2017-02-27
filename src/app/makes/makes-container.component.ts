@@ -42,10 +42,6 @@ import { MakeService } from './make.service';
       .panel-body {
           padding-bottom: 0;
       }
-
-      .make-card {
-          cursor: pointer;
-      }
     `]
 })
 
