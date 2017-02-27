@@ -4,27 +4,27 @@ import { FormsModule }    from '@angular/forms';
 import { HttpModule, JsonpModule }     from '@angular/http';
 
 // components
-import { CarDetailComponent } from './car-detail.component';
+import { CarComponent } from './car.component';
 
 // services
 import { CarService } from './car.service';
 
 // modules
-import { CarsRoutingModule } from './cars-routing.module';
+import { CarsRouting } from './cars.routing';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    CarsRoutingModule,
+    CarsRouting,
     HttpModule,
     JsonpModule
   ],
   declarations: [
-    CarDetailComponent,
+    CarComponent,
   ],
   providers: [
     CarService
   ]
 })
-export class CarsModule {}
+export class CarsModule { }

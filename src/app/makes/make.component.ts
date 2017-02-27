@@ -45,10 +45,10 @@ import { MakeService } from './make.service';
   `]
 })
 
-export class MakeDetailComponent implements OnInit {
+export class MakeComponent implements OnInit {
     
-    public make: Make
-    public cars: Car[]
+    make: Make
+    cars: Car[]
 
     constructor(
         private route: ActivatedRoute,
@@ -56,7 +56,7 @@ export class MakeDetailComponent implements OnInit {
         private service: MakeService
     ) { }
 
-    public ngOnInit() {
+    ngOnInit() {
       let id: number = +this.route.snapshot.params['id']
       this.getMake(id, null, null)
     }
@@ -72,7 +72,7 @@ export class MakeDetailComponent implements OnInit {
     }
 
     // todo: extract this to pipe
-    public parseDate(date: string): string {
+    parseDate(date: string): string {
         return moment(date).format('D MMM YYYY')
     }
 

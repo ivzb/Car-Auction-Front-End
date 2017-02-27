@@ -6,7 +6,7 @@ import { HttpModule, JsonpModule } from '@angular/http'
 // components
 import { MakesContainerComponent } from './makes-container.component'
 import { MakeCardComponent } from './make-card.component'
-import { MakeDetailComponent } from './make-detail.component'
+import { MakeComponent } from './make.component'
 
 // services
 import { MakeService } from './make.service'
@@ -25,7 +25,7 @@ import { MakesRouting } from './makes.routing'
   declarations: [
     MakesContainerComponent,
     MakeCardComponent,
-    MakeDetailComponent
+    MakeComponent
   ],
   providers: [
     MakeService
