@@ -3,11 +3,13 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import * as moment from 'moment';
+import { groupBy, GroupResult } from '@progress/kendo-data-query';
 
 import 'rxjs/add/operator/pairwise';
 
 // models
 import { Car } from './car';
+import { Bid } from '../bids/bid';
 
 // services
 import { CarService } from './car.service';
@@ -56,9 +58,6 @@ import { CarService } from './car.service';
                             Colour: <b>{{ car.Color.Value }}</b>
                         </li>
                         <li class="list-group-item">
-                            Vin: <b>{{ car.Vin }}</b>
-                        </li>
-                        <li class="list-group-item">
                             Estimated Value: <b>{{ car.EstimatedValue }}</b>
                         </li>
                         <li class="list-group-item">
@@ -80,16 +79,39 @@ import { CarService } from './car.service';
                             Drive: <b>{{ car.Drive }}</b>
                         </li>
                         <li class="list-group-item">
-                            Bids:
-                        </li>
-                        <li class="list-group-item" *ngFor="let bid of car.Bids; let i = index">
-                            <b>£{{ bid.Cost }}</b>
+                            <kendo-chart>
+                                <kendo-chart-title text="Bids">
+                                </kendo-chart-title>
+                                <kendo-chart-axis-defaults [line]="{ color: 'red' }">
+                                    <kendo-chart-axis-defaults-labels font="12pt sans-serif">
+                                    </kendo-chart-axis-defaults-labels>
+                                </kendo-chart-axis-defaults>
+                                <kendo-chart-tooltip>
+                                    <template kendoChartSeriesTooltipTemplate let-value="value">
+                                        Bid: £{{ value }}
+                                    </template>
+                                </kendo-chart-tooltip>
+                                <kendo-chart-series>
+                                    <kendo-chart-series-item
+                                        field="Cost" type="line"
+                                        [data]="car.Bids">
+                                    </kendo-chart-series-item>
+                                </kendo-chart-series>
+                            </kendo-chart>
                         </li>
                         <li class="list-group-item">
-                            Images:
-                        </li>
-                        <li class="list-group-item" *ngFor="let image of car.Images; let i = index">
-                            <img src="{{ image.Url }}" style="max-width: 100%" />
+                            <kendo-scrollview
+                                [data]="car.Images"
+                                [width]="width"
+                                [height]="height"
+                                [animate]="true"
+                                [arrows]="true"
+                                [pageable]="true"
+                                [endless]="true">
+                                <template let-item="item">
+                                    <img src="{{ item.Url }}" draggable="false" [ngStyle]="{ minWidth: width }" />
+                                </template>
+                            </kendo-scrollview>
                         </li>
                     </ul>
                 </div>
@@ -97,17 +119,22 @@ import { CarService } from './car.service';
         </div>
     </div>
   `,
-  styles: [``]
+  styles: [`
+    .k-scrollview-wrap {
+      margin: 0 auto;
+    }
+  `]
 })
 export class CarComponent implements OnInit {
-    
     car: Car;
+    width = "600px";
+    height = "400px";
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private service: CarService
-    ) { }
+    ) { } 
 
     ngOnInit() {
       let id = +this.route.snapshot.params['id'];

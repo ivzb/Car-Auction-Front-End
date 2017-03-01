@@ -2,6 +2,9 @@ import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule, JsonpModule }     from '@angular/http';
+import { ScrollViewModule } from '@progress/kendo-angular-scrollview';
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
 
 // components
 import { CarComponent } from './car.component';
@@ -18,7 +21,9 @@ import { CarsRouting } from './cars.routing';
     FormsModule,
     CarsRouting,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    ScrollViewModule,
+    ChartsModule
   ],
   declarations: [
     CarComponent,
