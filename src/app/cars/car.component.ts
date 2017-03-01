@@ -16,7 +16,7 @@ import { CarService } from './car.service';
   template: `
     <div *ngIf="car" id="movie-detail" class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ car.Lot }}</h3>
+            <h3 class="panel-title">{{ car.Title }}</h3>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -35,13 +35,49 @@ import { CarService } from './car.service';
                             Model: <b>{{ car.Model.Value }}</b>
                         </li>
                         <li class="list-group-item">
+                            Version: <b>{{ car.Version }}</b>
+                        </li>
+                        <li class="list-group-item">
                             Category: <b>{{ car.Category.Value }}</b>
                         </li>
                         <li class="list-group-item">
-                            Damage: <b>{{ car.Damage }}</b>
+                            Location: <b>{{ car.Location.Value }}</b>
                         </li>
                         <li class="list-group-item">
-                            Engine Type: <b>{{ car.EngineType }}</b>
+                            Currency: <b>{{ car.Currency.Value }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Transmission: <b>{{ car.Transmission.Value }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Fuel: <b>{{ car.Fuel.Value }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Colour: <b>{{ car.Color.Value }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Vin: <b>{{ car.Vin }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Estimated Value: <b>{{ car.EstimatedValue }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Odometer: <b>{{ car.Odometer }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Engine: <b>{{ car.Engine }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Primary Damage: <b>{{ car.PrimaryDamage }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Secondary Damage: <b>{{ car.SecondaryDamage }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Body Style: <b>{{ car.BodyStyle }}</b>
+                        </li>
+                        <li class="list-group-item">
+                            Drive: <b>{{ car.Drive }}</b>
                         </li>
                         <li class="list-group-item">
                             Bids:
