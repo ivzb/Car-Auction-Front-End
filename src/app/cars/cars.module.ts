@@ -4,6 +4,7 @@ import { FormsModule }    from '@angular/forms';
 import { HttpModule, JsonpModule }     from '@angular/http';
 import { ScrollViewModule } from '@progress/kendo-angular-scrollview';
 import { ChartsModule } from '@progress/kendo-angular-charts';
+import { MomentModule } from 'angular2-moment';
 import 'hammerjs';
 
 // components
@@ -23,7 +24,8 @@ import { CarsRouting } from './cars.routing';
     HttpModule,
     JsonpModule,
     ScrollViewModule,
-    ChartsModule
+    ChartsModule,
+    MomentModule
   ],
   declarations: [
     CarComponent,

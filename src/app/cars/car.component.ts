@@ -1,22 +1,20 @@
-import 'rxjs/add/operator/switchMap';
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import * as moment from 'moment';
-import { groupBy, GroupResult } from '@progress/kendo-data-query';
-
-import 'rxjs/add/operator/pairwise';
+import { Component, OnInit, HostBinding } from '@angular/core'
+import { Router, ActivatedRoute, Params } from '@angular/router'
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
+import { groupBy, GroupResult } from '@progress/kendo-data-query'
+import 'rxjs/add/operator/switchMap'
+import 'rxjs/add/operator/pairwise'
 
 // models
-import { Car } from './car';
-import { Bid } from '../bids/bid';
+import { Car } from './car'
+import { Bid } from '../bids/bid'
 
 // services
-import { CarService } from './car.service';
+import { CarService } from './car.service'
 
 @Component({
   template: `
-    <div *ngIf="car" id="movie-detail" class="panel panel-default">
+    <div *ngIf="car" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">{{ car.Title }}</h3>
         </div>
@@ -25,7 +23,9 @@ import { CarService } from './car.service';
                 <div class="col-md-12">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            Auction date: <b>{{ parseDate(car.AuctionOn) }}</b>
+                            Auction date:
+                            <b>{{ car.AuctionOn | amDateFormat:'LL' }}</b>
+                            <b>({{ car.AuctionOn | amTimeAgo }})</b>
                         </li>
                         <li class="list-group-item">
                             Year: <b>{{ car.Year }}</b>
@@ -126,29 +126,24 @@ import { CarService } from './car.service';
   `]
 })
 export class CarComponent implements OnInit {
-    car: Car;
-    width = "600px";
-    height = "400px";
+    private car: Car;
+    private width = "600px";
+    private height = "400px";
 
     constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private service: CarService
+      private route: ActivatedRoute,
+      private router: Router,
+      private service: CarService
     ) { } 
 
     ngOnInit() {
       let id = +this.route.snapshot.params['id'];
-      this.getCar(id);
+      this.getCar(id)
     }
 
     private getCar(id: number) {
-        this.service
-            .getCar(id)
-            .subscribe(car => this.car = car)
-    }
-
-    // todo: extract this to pipe
-    parseDate(date: string): string {
-        return moment(date).format('D MMM YYYY');
+      this.service
+        .getCar(id)
+        .subscribe(car => this.car = car)
     }
 }

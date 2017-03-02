@@ -15,48 +15,35 @@ import { MakeService } from './make.service';
 @Component({
   selector: 'makes-container',
   template: `
-  <div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">
-            <h1 class="panel-title">Makes</h1>
-        </h3>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <make-card class="col-md-4"
-                *ngFor="let make of makes"
-                [make]="make" [routerLink]="['/make/' + make.Id]">
-            </make-card>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <h1 class="panel-title">Makes</h1>
+            </h3>
         </div>
-    </div>`,
-  styles: [`
-      .panel {
-        margin: 20px 30px;
-      }
-
-      .panel-title {
-          margin: 0;
-          display: inline-block;
-      }
-
-      .panel-body {
-          padding-bottom: 0;
-      }
-    `]
+        <div class="panel-body">
+            <div class="row">
+                <make-card class="col-md-4"
+                    *ngFor="let make of makes"
+                    [make]="make" [routerLink]="['/make/' + make.Id]">
+                </make-card>
+            </div>
+        </div>
+    `
 })
 
 export class MakesContainerComponent implements OnInit {
-    makes: Make[];
+    private makes: Make[]
 
     constructor(
-        private router: Router,
-        private route: ActivatedRoute,
-        private service: MakeService
+      private router: Router,
+      private route: ActivatedRoute,
+      private service: MakeService
     ) { }
 
     ngOnInit() {
-        this.service
-            .getMakes()
-            .subscribe(makes => this.makes = makes)
+      this.service
+        .getMakes()
+        .subscribe(makes => this.makes = makes)
     }
 }
