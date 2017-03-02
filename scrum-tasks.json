@@ -13,22 +13,17 @@
 		{
 			'startedOn': null,
 			'doneOn': null,
-			'task': 'Add Bid creation date to DB. Show bids grouped by creation date in CarComponent chart. Lot auctions might not be accepted and then they are rebidded.'
-		},
-		{
-			'startedOn': null,
-			'doneOn': null,
 			'task': 'Pass moment object to service instead of formatted string.'
 		}
 	],
 	'doing': [
-		{
-			'startedOn': '3/2/2017',
-			'doneOn': null,
-			'task': 'Replace all date formating methods in components with angular-moment pipes.'
-		}
+
 	],
 	'done': [
-	
+		{
+			'startedOn': '3/2/2017',
+			'doneOn': '3/2/2017',
+			'task': 'Replace all date formating methods in components with angular-moment pipes.'
+		}	
 	]
 }
