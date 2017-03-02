@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { HttpModule, JsonpModule } from '@angular/http'
+import { MomentModule } from 'angular2-moment';
 
 // components
 import { MakesContainerComponent } from './makes-container.component'
@@ -20,7 +21,8 @@ import { MakesRouting } from './makes.routing'
     FormsModule,
     MakesRouting,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    MomentModule
   ],
   declarations: [
     MakesContainerComponent,

@@ -2,7 +2,6 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import * as moment from 'moment';
-
 import 'rxjs/add/operator/pairwise';
 import 'rxjs/add/operator/switchMap';
 
@@ -26,7 +25,10 @@ import { MakeService } from './make.service';
                         <li class="list-group-item car-item"
                             *ngFor="let car of cars"
                             [routerLink]="['/car/' + car.Id]">
-                                <i class="fa fa-calendar-o" aria-hidden="true"></i> {{ parseDate(car.CreatedOn) }}
+                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                {{ car.AuctionOn | amDateFormat:'LL' }}
+                                ({{ car.AuctionOn | amTimeAgo }})
+                                |
                                 <b>{{ car.Title }}</b>
                                 (<i class="fa fa-cogs" aria-hidden="true"></i> {{ car.Engine }} cc, {{ car.Fuel.Value }})
                         </li>
@@ -47,8 +49,8 @@ import { MakeService } from './make.service';
 
 export class MakeComponent implements OnInit {
     
-    make: Make
-    cars: Car[]
+    private make: Make
+    private cars: Car[]
 
     constructor(
         private route: ActivatedRoute,
@@ -68,14 +70,11 @@ export class MakeComponent implements OnInit {
                 this.make = make
                 this.service
                 .getMakeCars(id)
-                .subscribe(cars => this.cars = cars) })
+                .subscribe(cars => this.cars = cars)
+            })
     }
 
-    // todo: extract this to pipe
-    parseDate(date: string): string {
-        return moment(date).format('D MMM YYYY')
-    }
-
+    // todo: pass moment object to service, not formatted string
     private formatMomentDateForOData(date: any): string {
         return `\\${date.momentObj.toISOString()}\\`
     }
