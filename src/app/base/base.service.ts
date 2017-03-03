@@ -7,7 +7,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class BaseService {
 
-  private serviceUrl: string = 'http://localhost:13165/odata';
+  // private serviceUrl: string = 'http://localhost:13165/odata';
+  private serviceUrl: string = 'http://daniauto.azurewebsites.net/odata';
   private headers: Headers = new Headers({
     'If-Modified-Since': 'Mon, 26 Jul 1997 05:00:00 GMT',
     'Cache-Control': 'no-cache',

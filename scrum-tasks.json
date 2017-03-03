@@ -14,7 +14,12 @@
 			'startedOn': null,
 			'doneOn': null,
 			'task': 'Pass moment object to service instead of formatted string.'
-		}
+		},
+		{
+			'startedOn': null,
+			'doneOn': null,
+			'task': 'Add date filter to cars.'
+		},
 	],
 	'doing': [
 
