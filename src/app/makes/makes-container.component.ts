@@ -19,6 +19,11 @@ import { MakeService } from './make.service';
         <div class="panel-heading">
             <h3 class="panel-title">
                 <h1 class="panel-title">Makes</h1>
+                <kendo-autocomplete *ngIf="makesAutocompleteValues && makesAutocompleteValues.length > 0"
+                    [data]="makesAutocompleteValues"
+                    [valueField]="id"
+                    [placeholder]="'Search...'">
+                </kendo-autocomplete>
             </h3>
         </div>
         <div class="panel-body">
@@ -34,6 +39,7 @@ import { MakeService } from './make.service';
 
 export class MakesContainerComponent implements OnInit {
     private makes: Make[]
+    private makesAutocompleteValues: Array<{text: string, id: number}>
 
     constructor(
       private router: Router,
@@ -44,6 +50,15 @@ export class MakesContainerComponent implements OnInit {
     ngOnInit() {
       this.service
         .getMakes()
-        .subscribe(makes => this.makes = makes)
+        .subscribe(makes => {
+            this.makes = makes
+
+            this.makesAutocompleteValues = []
+            let _that = this
+            this.makes.forEach(function callback(value: Make, index: number) {
+                let autocompleteValue = { text: value.Value, id: value.Id }
+                _that.makesAutocompleteValues.push(autocompleteValue)
+            })
+        })
     }
 }

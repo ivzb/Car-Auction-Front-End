@@ -24,10 +24,14 @@
 			'startedOn': null,
 			'doneOn': null,
 			'task': 'Make pagination to cars grid.'
-		}
+		},
 	],
 	'doing': [
-
+		{
+			'startedOn': null,
+			'doneOn': null,
+			'task': 'Makes search'
+		}	
 	],
 	'done': [
 		{

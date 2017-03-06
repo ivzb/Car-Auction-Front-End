@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { HttpModule, JsonpModule } from '@angular/http'
 import { MomentModule } from 'angular2-moment';
+import { AutoCompleteModule } from '@progress/kendo-angular-dropdowns';
 
 // components
 import { MakesContainerComponent } from './makes-container.component'
@@ -22,7 +23,8 @@ import { MakesRouting } from './makes.routing'
     MakesRouting,
     HttpModule,
     JsonpModule,
-    MomentModule
+    MomentModule,
+    AutoCompleteModule
   ],
   declarations: [
     MakesContainerComponent,
