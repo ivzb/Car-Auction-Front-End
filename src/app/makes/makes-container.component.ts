@@ -19,17 +19,21 @@ import { MakeService } from './make.service';
         <div class="panel-heading">
             <h3 class="panel-title">
                 <h1 class="panel-title">Makes</h1>
-                <kendo-autocomplete *ngIf="makesAutocompleteValues && makesAutocompleteValues.length > 0"
-                    [data]="makesAutocompleteValues"
-                    [valueField]="id"
-                    [placeholder]="'Search...'">
+                
+                <kendo-autocomplete
+                    [data]="filteredMakesAutocompleteValues"
+                    [valueField]="'text'"
+                    [placeholder]="'Search...'"
+                    [filterable]="true"
+                    (filterChange)="handleSearchFilter($event)">
                 </kendo-autocomplete>
+                <i class="fa fa-search" aria-hidden="true"></i>
             </h3>
         </div>
         <div class="panel-body">
             <div class="row">
                 <make-card class="col-md-4"
-                    *ngFor="let make of makes"
+                    *ngFor="let make of filteredMakes"
                     [make]="make" [routerLink]="['/make/' + make.Id]">
                 </make-card>
             </div>
@@ -39,7 +43,9 @@ import { MakeService } from './make.service';
 
 export class MakesContainerComponent implements OnInit {
     private makes: Make[]
-    private makesAutocompleteValues: Array<{text: string, id: number}>
+    private filteredMakes: Make[]
+    private makesAutocompleteValues: Array<{text: string, value: number}>
+    private filteredMakesAutocompleteValues: Array<{text: string, value: number}>
 
     constructor(
       private router: Router,
@@ -52,13 +58,20 @@ export class MakesContainerComponent implements OnInit {
         .getMakes()
         .subscribe(makes => {
             this.makes = makes
+            this.filteredMakes = makes
 
             this.makesAutocompleteValues = []
             let _that = this
             this.makes.forEach(function callback(value: Make, index: number) {
-                let autocompleteValue = { text: value.Value, id: value.Id }
+                let autocompleteValue = { text: value.Value, value: value.Id }
                 _that.makesAutocompleteValues.push(autocompleteValue)
             })
+            this.filteredMakesAutocompleteValues = this.makesAutocompleteValues;
         })
+    }
+
+    handleSearchFilter(search: string) {
+        this.filteredMakesAutocompleteValues = this.makesAutocompleteValues.filter((x) => x.text.toLowerCase().indexOf(search.toLowerCase()) !== -1)
+        this.filteredMakes = this.makes.filter((x) => x.Value.toLowerCase().indexOf(search.toLowerCase()) !== -1)
     }
 }

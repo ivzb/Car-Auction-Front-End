@@ -27,17 +27,17 @@
 		},
 	],
 	'doing': [
-		{
-			'startedOn': null,
-			'doneOn': null,
-			'task': 'Makes search'
-		}	
 	],
 	'done': [
 		{
-			'startedOn': '3/2/2017',
-			'doneOn': '3/2/2017',
+			'startedOn': '2/3/2017',
+			'doneOn': '2/3/2017',
 			'task': 'Replace all date formating methods in components with angular-moment pipes.'
+		},
+		{
+			'startedOn': '6/3/2017',
+			'doneOn': '7/3/2017',
+			'task': 'Makes search'
 		}	
 	]
 }
