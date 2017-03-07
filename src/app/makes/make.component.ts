@@ -32,6 +32,9 @@ import { MakeService } from './make.service';
                                 <b>{{ car.Title }}</b>
                                 (<i class="fa fa-cogs" aria-hidden="true"></i> {{ car.Engine }} cc, {{ car.Fuel.Value }})
                         </li>
+                        <li>
+                            <div (click)="loadMoreCars()">Load more...</div>
+                        </li>
                     </ul>
                     
                     <h3 *ngIf="cars && cars.length == 0">No cars in category <b>{{ make.Value }}</b> found.</h3>
@@ -51,6 +54,8 @@ export class MakeComponent implements OnInit {
     
     private make: Make
     private cars: Car[]
+    private top: number
+    private skip: number
 
     constructor(
         private route: ActivatedRoute,
@@ -60,18 +65,32 @@ export class MakeComponent implements OnInit {
 
     ngOnInit() {
       let id: number = +this.route.snapshot.params['id']
-      this.getMake(id, null, null)
+      this.cars = []
+      this.top = 21
+      this.skip = 0
+      this.getMake(id)
     }
 
-    private getMake(id: number, from: string, to: string) {
+    private getMake(id: number) {
         this.service
             .getMake(id)
             .subscribe(make => {
                 this.make = make
-                this.service
-                .getMakeCars(id)
-                .subscribe(cars => this.cars = cars)
+                this.getMakeCars(id, this.top, this.skip)
             })
+    }
+
+    private getMakeCars(id: number, top: number, skip: number) {
+        this.service
+            .getMakeCars(id, top, skip)
+            .subscribe(cars => this.cars.push(...cars))
+    }
+
+    private loadMoreCars() {
+        this.skip += this.top
+        console.log('skip: ' + this.skip);
+        console.log('top: ' + this.top);
+        this.getMakeCars(this.make.Id, this.top, this.skip)
     }
 
     // todo: pass moment object to service, not formatted string

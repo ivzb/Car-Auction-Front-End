@@ -21,8 +21,8 @@ export class MakeService {
     return this.baseService.get(`${ this.url }?$orderby=Value`)
   }
 
-  getMakeCars(id: number) {
-    return this.baseService.get(`${ this.url }(${ id })/Cars?$orderby=AuctionOn desc&$expand=Fuel`)
+  getMakeCars(id: number, top: number, skip: number) {
+    return this.baseService.get(`${ this.url }(${ id })/Cars?$orderby=AuctionOn desc&$expand=Fuel&$top=${ top }&$skip=${ skip }`)
   }
 
   getMakeCarsInPeriod(id: number, from: string, to: string) {
