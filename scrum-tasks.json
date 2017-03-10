@@ -27,6 +27,11 @@
 			'doneOn': null,
 			'task': 'Make pagination to cars grid.'
 		},
+		{
+			'startedOn': '10/3/2017',
+			'doneOn': null,
+			'task': 'Change Make items to Model instead of Car and create Model holder.'
+		}
 	],
 	'done': [
 		{
