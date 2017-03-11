@@ -20,6 +20,21 @@
 			'doneOn': null,
 			'task': 'Add date filter to cars grid.'
 		},
+		{
+			'startedOn': null,
+			'doneOn': null,
+			'task': 'Create breadcrumbs.'
+		},
+		{
+			'startedOn': null,
+			'doneOn': null,
+			'task': 'Create loading bar similar to YouTube/LinkedIn'
+		},
+		{
+			'startedOn': null,
+			'doneOn': null,
+			'task': 'Style "Load more" button'
+		}
 	],
 	'doing': [
 		{
@@ -43,6 +58,11 @@
 			'startedOn': '10/3/2017',
 			'doneOn': '11/3/2017',
 			'task': 'Change Make items to Model instead of Car and create Model holder.'
+		},
+		{
+			'startedOn': '11/3/2017',
+			'doneOn': null,
+			'task': 'Create Model module which holds Cars grid.'
 		}
 	]
 }

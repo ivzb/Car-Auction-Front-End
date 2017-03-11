@@ -13,12 +13,14 @@ import { BaseService } from './base/base.service';
 import { AppRouting } from './app.routing'
 import { CarsModule }  from './cars/cars.module'
 import { MakesModule } from './makes/makes.module'
+import { ModelsModule } from './models/models.module'
 
 @NgModule({
   imports: [
     BrowserModule,
     CarsModule,
     MakesModule,
+    ModelsModule,
     AppRouting
   ],
   declarations: [

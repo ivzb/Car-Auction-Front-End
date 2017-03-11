@@ -22,7 +22,7 @@ import { MakeService } from './make.service';
             <div class="row">
                 <div class="col-md-12">
                     <ul class="list-group" *ngIf="models">
-                        <li class="list-group-item model-item"
+                        <li class="list-group-item cursor-pointer"
                             *ngFor="let model of models"
                             [routerLink]="['/model/' + model.Id]">
                                 <b>{{ model.Value }}</b>
@@ -35,11 +35,6 @@ import { MakeService } from './make.service';
         </div>
     </div>
   `,
-  styles: [`
-    .model-item {
-        cursor: pointer;
-    }
-  `]
 })
 
 export class MakeComponent implements OnInit {
