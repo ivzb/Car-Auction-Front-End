@@ -7,7 +7,7 @@ import 'rxjs/add/operator/switchMap';
 
 // models
 import { Make } from './make';
-import { Car } from '../cars/car';
+import { Model } from '../models/model';
 
 // services
 import { MakeService } from './make.service';
@@ -21,30 +21,22 @@ import { MakeService } from './make.service';
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">
-                    <ul class="list-group" *ngIf="cars">
-                        <li class="list-group-item car-item"
-                            *ngFor="let car of cars"
-                            [routerLink]="['/car/' + car.Id]">
-                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                                {{ car.AuctionOn | amDateFormat:'LL' }}
-                                ({{ car.AuctionOn | amTimeAgo }})
-                                |
-                                <b>{{ car.Title }}</b>
-                                (<i class="fa fa-cogs" aria-hidden="true"></i> {{ car.Engine }} cc, {{ car.Fuel.Value }})
-                        </li>
-                        <li>
-                            <div (click)="loadMoreCars()">Load more...</div>
+                    <ul class="list-group" *ngIf="models">
+                        <li class="list-group-item model-item"
+                            *ngFor="let model of models"
+                            [routerLink]="['/model/' + model.Id]">
+                                <b>{{ model.Value }}</b>
                         </li>
                     </ul>
                     
-                    <h3 *ngIf="cars && cars.length == 0">No cars in category <b>{{ make.Value }}</b> found.</h3>
+                    <h3 *ngIf="models && models.length == 0">No models in category <b>{{ make.Value }}</b> found.</h3>
                 </div>
             </div>
         </div>
     </div>
   `,
   styles: [`
-    .car-item {
+    .model-item {
         cursor: pointer;
     }
   `]
@@ -53,9 +45,7 @@ import { MakeService } from './make.service';
 export class MakeComponent implements OnInit {
     
     private make: Make
-    private cars: Car[]
-    private top: number
-    private skip: number
+    private models: Model[]
 
     constructor(
         private route: ActivatedRoute,
@@ -65,9 +55,6 @@ export class MakeComponent implements OnInit {
 
     ngOnInit() {
       let id: number = +this.route.snapshot.params['id']
-      this.cars = []
-      this.top = 21
-      this.skip = 0
       this.getMake(id)
     }
 
@@ -76,25 +63,13 @@ export class MakeComponent implements OnInit {
             .getMake(id)
             .subscribe(make => {
                 this.make = make
-                this.getMakeCars(id, this.top, this.skip)
+                this.getMakeModels(id)
             })
     }
 
-    private getMakeCars(id: number, top: number, skip: number) {
+    private getMakeModels(id: number) {
         this.service
-            .getMakeCars(id, top, skip)
-            .subscribe(cars => this.cars.push(...cars))
-    }
-
-    private loadMoreCars() {
-        this.skip += this.top
-        console.log('skip: ' + this.skip);
-        console.log('top: ' + this.top);
-        this.getMakeCars(this.make.Id, this.top, this.skip)
-    }
-
-    // todo: pass moment object to service, not formatted string
-    private formatMomentDateForOData(date: any): string {
-        return `\\${date.momentObj.toISOString()}\\`
+            .getMakeModels(id)
+            .subscribe(models => this.models = models)
     }
 }

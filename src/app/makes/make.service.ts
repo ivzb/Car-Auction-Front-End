@@ -21,16 +21,20 @@ export class MakeService {
     return this.baseService.get(`${ this.url }?$orderby=Value`)
   }
 
-  getMakeCars(id: number, top: number, skip: number) {
-    return this.baseService.get(`${ this.url }(${ id })/Cars?$orderby=AuctionOn desc&$expand=Fuel&$top=${ top }&$skip=${ skip }`)
+  getMakeModels(id: number) {
+    return this.baseService.get(`${ this.url }(${ id })/Models?$orderby=Value`);
   }
 
-  getMakeCarsInPeriod(id: number, from: string, to: string) {
-    let periodFilter: string = ''
-    if (from != null && to != null) periodFilter = `&$filter=Auction ge DateTime${ from } and AuctionOn le DateTime${ to })`
-    else if (from != null) periodFilter = `&$filter=AuctionOn ge DateTime${ from }`
-    else if (to != null) periodFilter = `&$filter=AuctionOn le DateTime${ to }`
+  // getMakeCars(id: number, top: number, skip: number) {
+  //   return this.baseService.get(`${ this.url }(${ id })/Cars?$orderby=AuctionOn desc&$expand=Fuel&$top=${ top }&$skip=${ skip }`)
+  // }
 
-    return this.baseService.get(`${ this.url }(${ id })/Cars?$orderby=AuctionOn desc&$expand=Fuel${ periodFilter }`)
-  }
+  // getMakeCarsInPeriod(id: number, from: string, to: string) {
+  //   let periodFilter: string = ''
+  //   if (from != null && to != null) periodFilter = `&$filter=Auction ge DateTime${ from } and AuctionOn le DateTime${ to })`
+  //   else if (from != null) periodFilter = `&$filter=AuctionOn ge DateTime${ from }`
+  //   else if (to != null) periodFilter = `&$filter=AuctionOn le DateTime${ to }`
+
+  //   return this.baseService.get(`${ this.url }(${ id })/Cars?$orderby=AuctionOn desc&$expand=Fuel${ periodFilter }`)
+  // }
 }
