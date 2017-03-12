@@ -33,7 +33,7 @@ import { ModelsService } from './models.service';
                                 (<i class="fa fa-cogs" aria-hidden="true"></i> {{ car.Engine }} cc, {{ car.Fuel.Value }})
                         </li>
 
-                         <li *ngIf="showLoadMoreButton">
+                         <li *ngIf="showLoadMoreButton" class="load-more-button cursor-pointer">
                             <div (click)="loadMoreCars()">Load more...</div>
                         </li>
                     </ul>
@@ -44,6 +44,22 @@ import { ModelsService } from './models.service';
         </div>
     </div>
   `,
+  styles: [`
+    .load-more-button {
+      list-style: none;
+      display: block;
+      margin: 20px auto;
+      width: 150px;
+    }
+
+    .load-more-button div {
+      background: rgb(41, 158, 255);
+      padding: 10px 25px;
+      text-align: center;
+      font-weight: bold;
+      color: #fff;
+    }
+  `]
 })
 
 export class ModelComponent implements OnInit {
@@ -88,6 +104,7 @@ export class ModelComponent implements OnInit {
     }
 
     private loadMoreCars() {
+        this.showLoadMoreButton = false
         this.skip += this.top
         this.getModelCars(this.model.Id)
     }
