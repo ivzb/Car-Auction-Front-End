@@ -60,9 +60,14 @@
 			'task': 'Make pagination to cars grid.'
 		},
 		{
-			'startedOn': null,
-			'doneOn': null,
+			'startedOn': '12/3/2017',
+			'doneOn': '12/3/2017',
 			'task': 'Style "Load more" button'
+		},
+		{
+			'startedOn': '12/3/2017',
+			'doneOn': '12/3/2017',
+			'task': 'Search for models.'
 		}
 	]
 }

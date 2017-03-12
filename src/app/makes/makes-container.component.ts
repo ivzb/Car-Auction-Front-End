@@ -25,7 +25,8 @@ import { MakeService } from './make.service';
                     [valueField]="'text'"
                     [placeholder]="'Search...'"
                     [filterable]="true"
-                    (filterChange)="handleSearchFilter($event)">
+                    (filterChange)="handleSearchFilter($event)"
+                    (valueChange)="handleSearchFilter($event)">
                 </kendo-autocomplete>
                 <i class="fa fa-search" aria-hidden="true"></i>
             </h3>
