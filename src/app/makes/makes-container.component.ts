@@ -28,18 +28,20 @@ import { MakeService } from './make.service';
                     (filterChange)="handleSearchFilter($event)"
                     (valueChange)="handleSearchFilter($event)">
                 </kendo-autocomplete>
-                <i class="fa fa-search" aria-hidden="true"></i>
             </h3>
         </div>
         <div class="panel-body">
-            <div class="row">
-                <make-card class="col-md-4"
+            <div class="row" id="tiles">
+                <make-card class="col-md-4 col-sm-4 col-xs-12 tile"
                     *ngFor="let make of filteredMakes"
                     [make]="make" [routerLink]="['/make/' + make.Id]">
                 </make-card>
             </div>
         </div>
-    `
+    `,
+    styles: [`
+        make-card { margin-bottom: 20px; }
+    `]
 })
 
 export class MakesContainerComponent implements OnInit {

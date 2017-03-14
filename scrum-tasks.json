@@ -30,13 +30,13 @@
 			'doneOn': null,
 			'task': 'Create loading bar similar to YouTube/LinkedIn'
 		},
+	],
+	'doing': [
 		{
-			'startedOn': null,
+			'startedOn': '14/3/2017',
 			'doneOn': null,
 			'task': 'Apply design theme.'
 		}
-	],
-	'doing': [
 	],
 	'done': [
 		{

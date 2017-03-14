@@ -3,12 +3,22 @@
 }
 
 .panel {
-  margin: 20px 30px;
+  background: transparent;
+  margin-bottom: 0;
+  padding-bottom: 15px;
 }
 
-.panel-title {
+.panel .panel-heading .panel-title {
   margin: 0;
-  display: inline-block;
+  font-size: 40px;
+  color: #3e4258;
+  line-height: 78px;
+}
+
+.panel .panel-heading kendo-autocomplete {
+  float: right;
+  font-size: 24px;
+  margin-top: 18px;
 }
 
 .panel-body {
