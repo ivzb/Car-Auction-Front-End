@@ -13,17 +13,12 @@
 		{
 			'startedOn': null,
 			'doneOn': null,
-			'task': 'Pass moment object to service instead of formatted string.'
+			'task': 'Pass moment object to service instead of formatted string when implement date filter.'
 		},
 		{
 			'startedOn': null,
 			'doneOn': null,
-			'task': 'Add date filter to cars grid.'
-		},
-		{
-			'startedOn': null,
-			'doneOn': null,
-			'task': 'Create breadcrumbs.'
+			'task': 'Add date filter to cars grid when kendo release datepicker control.'
 		},
 		{
 			'startedOn': null,
@@ -32,11 +27,6 @@
 		},
 	],
 	'doing': [
-		{
-			'startedOn': '14/3/2017',
-			'doneOn': null,
-			'task': 'Apply design theme.'
-		}
 	],
 	'done': [
 		{
@@ -73,6 +63,16 @@
 			'startedOn': '12/3/2017',
 			'doneOn': '12/3/2017',
 			'task': 'Search for models.'
-		}
+		},
+		{
+			'startedOn': '14/3/2017',
+			'doneOn': '15/3/2017/,
+			'task': 'Apply design theme.'
+		},
+		{
+			'startedOn': '15/3/2017',
+			'doneOn': '15/3/2017',
+			'task': 'Create breadcrumbs.'
+		},
 	]
 }

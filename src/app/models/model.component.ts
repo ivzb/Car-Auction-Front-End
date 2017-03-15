@@ -16,7 +16,13 @@ import { ModelsService } from './models.service';
   template: `
     <div *ngIf="model" class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ model.Value }}</h3>
+            <h3 class="panel-title">
+                <a [routerLink]="['/makes']">Makes</a>
+                /
+                <a [routerLink]="['/make/' + model.Make.Id]">{{ model.Make.Value }}</a>
+                / 
+                {{ model.Value }}
+            </h3>
         </div>
         <div class="panel-body">
             <div class="row">

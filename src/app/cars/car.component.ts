@@ -16,7 +16,15 @@ import { CarService } from './car.service'
   template: `
     <div *ngIf="car" class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ car.Title }}</h3>
+            <h3 class="panel-title">
+                <a [routerLink]="['/makes']">Makes</a>
+                /
+                <a [routerLink]="['/make/' + car.Make.Id]">{{ car.Make.Value }}</a>
+                / 
+                <a [routerLink]="['/model/' + car.Model.Id]">{{ car.Model.Value }}</a>
+                /
+                {{ car.Title }}
+            </h3>
         </div>
         <div class="panel-body">
             <div class="row">

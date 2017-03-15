@@ -13,7 +13,7 @@ export class ModelsService {
   constructor(private baseService: BaseService) { }
 
   getModel(id: number) {
-    return this.baseService.get(`${ this.url }(${ id })`)
+    return this.baseService.get(`${ this.url }(${ id })?$expand=Make`)
   }
 
   getModelCars(id: number, top: number, skip: number) {
