@@ -39,9 +39,6 @@ import { MakeService } from './make.service';
             </div>
         </div>
     `,
-    styles: [`
-        make-card { margin-bottom: 20px; }
-    `]
 })
 
 export class MakesContainerComponent implements OnInit {

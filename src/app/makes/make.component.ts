@@ -14,36 +14,36 @@ import { MakeService } from './make.service';
 
 @Component({
   template: `
-    <div *ngIf="make" class="panel panel-default">
+    <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ make.Value }}</h3>
-
-            <kendo-autocomplete
-                [data]="filteredModelsAutocompleteValues"
-                [valueField]="'text'"
-                [placeholder]="'Search...'"
-                [filterable]="true"
-                (filterChange)="handleSearchFilter($event)"
-                (valueChange)="handleSearchFilter($event)">
-            </kendo-autocomplete>
-            <i class="fa fa-search" aria-hidden="true"></i>
+            <h3 class="panel-title">
+                <h1 class="panel-title" *ngIf="make">{{ make.Value }}</h1>
+                
+                <kendo-autocomplete
+                    [data]="filteredModelsAutocompleteValues"
+                    [valueField]="'text'"
+                    [placeholder]="'Search...'"
+                    [filterable]="true"
+                    (filterChange)="handleSearchFilter($event)"
+                    (valueChange)="handleSearchFilter($event)">
+                </kendo-autocomplete>
+            </h3>
         </div>
         <div class="panel-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="list-group" *ngIf="models">
-                        <li class="list-group-item cursor-pointer"
-                            *ngFor="let model of filteredModels"
-                            [routerLink]="['/model/' + model.Id]">
-                                <b>{{ model.Value }}</b>
-                        </li>
-                    </ul>
-                    
-                    <h3 *ngIf="models && models.length == 0">No models in category <b>{{ make.Value }}</b> found.</h3>
+            <div class="row" id="tiles" *ngIf="models">
+                <div class="col-md-4 col-sm-4 col-xs-12 tile"
+                    *ngFor="let model of filteredModels"
+                    [routerLink]="['/model/' + model.Id]">
+                    <div class="team-portrait block cursor-pointer">              
+                        <div class="title">
+                            <h2>{{ model.Value }}</h2>
+                        </div>
+                    </div>
                 </div>
+                
+                <h3 *ngIf="models && models.length == 0">No models in category <b>{{ make.Value }}</b> found.</h3>
             </div>
         </div>
-    </div>
   `,
 })
 

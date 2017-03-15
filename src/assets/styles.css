@@ -28,3 +28,7 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.tile {
+  margin-bottom: 20px;
+}
