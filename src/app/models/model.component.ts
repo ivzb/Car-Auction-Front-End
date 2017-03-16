@@ -1,16 +1,17 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import * as moment from 'moment';
-import 'rxjs/add/operator/pairwise';
-import 'rxjs/add/operator/switchMap';
+import { Component, OnInit, HostBinding } from '@angular/core'
+import { Router, ActivatedRoute, Params } from '@angular/router'
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
+import * as moment from 'moment'
+import 'rxjs/add/operator/pairwise'
+import 'rxjs/add/operator/switchMap'
 
 // models
-import { Model } from './model';
-import { Car } from '../cars/car';
+import { Model } from './model'
+import { Car } from '../cars/car'
 
 // services
-import { ModelsService } from './models.service';
+import { ModelsService } from './models.service'
+import { LoadingBarService } from '../loading-bar.service'
 
 @Component({
   template: `
@@ -79,10 +80,14 @@ export class ModelComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private service: ModelsService
+        private service: ModelsService,
+        private loadingBarService: LoadingBarService
     ) { }
 
     ngOnInit() {
+      this.loadingBarService.startProgress()
+      this.loadingBarService.incrementProgress(30)
+
       let id: number = +this.route.snapshot.params['id']
       this.top = 21
       this.skip = 0
@@ -94,6 +99,7 @@ export class ModelComponent implements OnInit {
         this.service
             .getModel(id)
             .subscribe(model => {
+                this.loadingBarService.incrementProgress(30)
                 this.model = model
                 this.getModelCars(id)
             })
@@ -103,13 +109,18 @@ export class ModelComponent implements OnInit {
         this.service
             .getModelCars(id, this.top, this.skip)
             .subscribe(cars => {
+              this.loadingBarService.incrementProgress(30)
               if (this.cars === undefined) this.cars = []
               this.cars.push(...cars)
               this.showLoadMoreButton = cars.length == this.top
+              this.loadingBarService.completeProgress()
             })
     }
 
     private loadMoreCars() {
+        this.loadingBarService.startProgress()
+        this.loadingBarService.incrementProgress(30)
+
         this.showLoadMoreButton = false
         this.skip += this.top
         this.getModelCars(this.model.Id)

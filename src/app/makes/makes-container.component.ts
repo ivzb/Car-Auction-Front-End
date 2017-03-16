@@ -11,6 +11,7 @@ import { MakeCardComponent } from './make-card.component';
 
 // services
 import { MakeService } from './make.service';
+import { LoadingBarService } from '../loading-bar.service'
 
 @Component({
   selector: 'makes-container',
@@ -50,13 +51,18 @@ export class MakesContainerComponent implements OnInit {
     constructor(
       private router: Router,
       private route: ActivatedRoute,
-      private service: MakeService
+      private service: MakeService,
+      private loadingBarService: LoadingBarService
     ) { }
 
     ngOnInit() {
+      this.loadingBarService.startProgress()
+      this.loadingBarService.incrementProgress(30)
+
       this.service
         .getMakes()
         .subscribe(makes => {
+            this.loadingBarService.incrementProgress(30)
             this.makes = makes
             this.filteredMakes = makes
 
@@ -66,7 +72,8 @@ export class MakesContainerComponent implements OnInit {
                 let autocompleteValue = { text: value.Value, value: value.Id }
                 _that.makesAutocompleteValues.push(autocompleteValue)
             })
-            this.filteredMakesAutocompleteValues = this.makesAutocompleteValues;
+            this.filteredMakesAutocompleteValues = this.makesAutocompleteValues
+            this.loadingBarService.completeProgress()
         })
     }
 

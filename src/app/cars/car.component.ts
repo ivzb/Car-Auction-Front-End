@@ -11,6 +11,7 @@ import { Bid } from '../bids/bid'
 
 // services
 import { CarService } from './car.service'
+import { LoadingBarService } from '../loading-bar.service'
 
 @Component({
   template: `
@@ -141,17 +142,24 @@ export class CarComponent implements OnInit {
     constructor(
       private route: ActivatedRoute,
       private router: Router,
-      private service: CarService
+      private service: CarService,
+      private loadingBarService: LoadingBarService
     ) { } 
 
     ngOnInit() {
-      let id = +this.route.snapshot.params['id'];
+      this.loadingBarService.startProgress()
+      this.loadingBarService.incrementProgress(30)
+
+      let id = +this.route.snapshot.params['id']
       this.getCar(id)
     }
 
     private getCar(id: number) {
       this.service
         .getCar(id)
-        .subscribe(car => this.car = car)
+        .subscribe(car => {
+            this.car = car
+            this.loadingBarService.completeProgress()
+        })
     }
 }

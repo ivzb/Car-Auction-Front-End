@@ -8,12 +8,14 @@ import { PageNotFoundComponent } from './page-not-found.component'
 
 // services
 import { BaseService } from './base/base.service';
+import { LoadingBarService } from './loading-bar.service';
 
 // modules
 import { AppRouting } from './app.routing'
 import { CarsModule }  from './cars/cars.module'
 import { MakesModule } from './makes/makes.module'
 import { ModelsModule } from './models/models.module'
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 @NgModule({
   imports: [
@@ -21,7 +23,8 @@ import { ModelsModule } from './models/models.module'
     CarsModule,
     MakesModule,
     ModelsModule,
-    AppRouting
+    AppRouting,
+    SlimLoadingBarModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -29,7 +32,8 @@ import { ModelsModule } from './models/models.module'
     PageNotFoundComponent
   ],
   providers: [
-    BaseService
+    BaseService,
+    LoadingBarService
   ],
   bootstrap: [
     AppComponent

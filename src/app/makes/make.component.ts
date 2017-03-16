@@ -1,16 +1,17 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import * as moment from 'moment';
-import 'rxjs/add/operator/pairwise';
-import 'rxjs/add/operator/switchMap';
+import { Component, OnInit, HostBinding } from '@angular/core'
+import { Router, ActivatedRoute, Params } from '@angular/router'
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
+import * as moment from 'moment'
+import 'rxjs/add/operator/pairwise'
+import 'rxjs/add/operator/switchMap'
 
 // models
-import { Make } from './make';
-import { Model } from '../models/model';
+import { Make } from './make'
+import { Model } from '../models/model'
 
 // services
-import { MakeService } from './make.service';
+import { MakeService } from './make.service'
+import { LoadingBarService } from '../loading-bar.service'
 
 @Component({
   template: `
@@ -62,10 +63,14 @@ export class MakeComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private service: MakeService
+        private service: MakeService,
+        private loadingBarService: LoadingBarService
     ) { }
 
     ngOnInit() {
+      this.loadingBarService.startProgress()
+      this.loadingBarService.incrementProgress(30)
+
       let id: number = +this.route.snapshot.params['id']
       this.getMake(id)
     }
@@ -74,6 +79,7 @@ export class MakeComponent implements OnInit {
         this.service
             .getMake(id)
             .subscribe(make => {
+                this.loadingBarService.incrementProgress(30)
                 this.make = make
                 this.getMakeModels(id)
             })
@@ -83,6 +89,7 @@ export class MakeComponent implements OnInit {
         this.service
             .getMakeModels(id)
             .subscribe(models => {
+                this.loadingBarService.incrementProgress(30)
                 this.models = models
                 this.filteredModels = this.models
 
@@ -93,6 +100,7 @@ export class MakeComponent implements OnInit {
                     _that.modelsAutocompleteValues.push(autocompleteValue)
                 })
                 this.filteredModelsAutocompleteValues = this.modelsAutocompleteValues;
+                this.loadingBarService.completeProgress();
             })
     }
     
