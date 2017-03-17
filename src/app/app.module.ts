@@ -1,5 +1,6 @@
 import { NgModule }       from '@angular/core'
 import { BrowserModule }  from '@angular/platform-browser'
+import { CollapseModule } from 'ng2-bootstrap';
 
 // components
 import { AppComponent } from './app.component'
@@ -24,7 +25,8 @@ import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
     MakesModule,
     ModelsModule,
     AppRouting,
-    SlimLoadingBarModule.forRoot()
+    SlimLoadingBarModule.forRoot(),
+    CollapseModule.forRoot()
   ],
   declarations: [
     AppComponent,

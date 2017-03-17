@@ -20,11 +20,6 @@
 			'doneOn': null,
 			'task': 'Add date filter to cars grid when kendo release datepicker control.'
 		},
-		{
-			'startedOn': null,
-			'doneOn': null,
-			'task': 'Fix bootstrap menu in responsive mode.'
-		},
 	],
 	'doing': [
 	],
@@ -83,6 +78,11 @@
 			'startedOn': '17/3/2017',
 			'doneOn': '17/3/2017',
 			'task': 'Styles breadcrumbs.'
-		}
+		},
+		{
+			'startedOn': '17/3/2017',
+			'doneOn': '17/3/2017',
+			'task': 'Fix bootstrap menu to toggle in responsive mode.'
+		},
 	]
 }

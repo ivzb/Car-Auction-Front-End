@@ -5,7 +5,7 @@ import { Component } from '@angular/core'
   template: `
     <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <button type="button" class="navbar-toggle" (click)="isCollapsed = !isCollapsed">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -15,12 +15,34 @@ import { Component } from '@angular/core'
           DaniAuto
         </a>
       </div>
-      <div class="collapse navbar-collapse">
+      <div [collapse]="isCollapsed">
         <ul class="nav navbar-nav">
-          <li><a class="scroll" routerLink="/makes" routerLinkActive="active"><i class="icon-briefcase"></i>Makes<span class="arrow-left"></span></a></li>
+          <li>
+            <a class="scroll" routerLink="/makes" routerLinkActive="active" (click)="isCollapsed = true">
+              <i class="icon-briefcase"></i>Makes<span class="arrow-left"></span>
+            </a>
+          </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
-    `
+    `,
+    styles: [`
+      .collapse, .collapse.in {
+        display: block !important;
+        transition: all .25s ease-in-out;
+      }
+
+      .collapse {
+        opacity: 0;
+        height: 0;
+      }
+
+      .collapse.in {
+        opacity: 1;
+        height: 100%;
+      }
+    `]
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  isCollapsed: boolean = true 
+}
