@@ -20,6 +20,21 @@
 			'doneOn': null,
 			'task': 'Add date filter to cars grid when kendo release datepicker control.'
 		},
+		{
+			'startedOn': null,
+			'doneOn': null,
+			'task': 'Add cool loading application animation.'
+		},
+		{
+			'startedOn': null,
+			'doneOn': null,
+			'task': 'Extract components templates to .template files.'
+		},
+		{
+			'startedOn': null,
+			'doneOn': null,
+			'task': 'Visualise Make brands image.'
+		},
 	],
 	'doing': [
 	],
