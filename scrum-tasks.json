@@ -23,15 +23,10 @@
 		{
 			'startedOn': null,
 			'doneOn': null,
-			'task': 'Make breadcrumb hover.'
-		}
+			'task': 'Fix bootstrap menu in responsive mode.'
+		},
 	],
 	'doing': [
-		{
-			'startedOn': '16/3/2017',
-			'doneOn': null,
-			'task': 'Create loading bar similar to YouTube/LinkedIn'
-		},
 	],
 	'done': [
 		{
@@ -51,7 +46,7 @@
 		},
 		{
 			'startedOn': '11/3/2017',
-			'doneOn': null,
+			'doneOn': '11/3/2017,
 			'task': 'Create Model module which holds Cars grid.'
 		},
 		{
@@ -79,5 +74,15 @@
 			'doneOn': '15/3/2017',
 			'task': 'Create breadcrumbs.'
 		},
+		{
+			'startedOn': '16/3/2017',
+			'doneOn': '16/3/2017',
+			'task': 'Create loading bar similar to YouTube/LinkedIn'
+		},
+		{
+			'startedOn': '17/3/2017',
+			'doneOn': '17/3/2017',
+			'task': 'Styles breadcrumbs.'
+		}
 	]
 }

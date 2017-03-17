@@ -15,6 +15,14 @@
   line-height: 78px;
 }
 
+.panel-title a {
+  color: #299eff!important;
+}
+
+.panel-title a:hover {
+  text-decoration: underline;
+}
+
 .panel .panel-heading kendo-autocomplete {
   float: right;
   font-size: 24px;
