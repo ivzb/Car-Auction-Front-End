@@ -30,11 +30,6 @@
 			'doneOn': null,
 			'task': 'Visualise Make brands image.'
 		},
-		{
-			'startedOn': null,
-			'doneOn': null,
-			'task': 'Fix search in responsive mode.'
-		},
 	],
 	'doing': [
 	],
@@ -103,6 +98,11 @@
 			'startedOn': '18/3/2017',
 			'doneOn': '18/3/2017',
 			'task': 'Extract components templates to .template files.'
+		},
+		{
+			'startedOn': '18/3/2017',
+			'doneOn': '18/3/2017',
+			'task': 'Fix search in responsive mode.'
 		},
 	]
 }

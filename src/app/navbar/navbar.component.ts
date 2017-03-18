@@ -21,5 +21,7 @@ import { Component } from '@angular/core'
   `]
 })
 export class NavbarComponent {
-  isCollapsed: boolean = false 
+  /* hacky closing navbar menu for small screens,
+     because otherwise its collapsed on page load */
+  isCollapsed: boolean = window.innerWidth < 990
 }

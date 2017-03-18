@@ -1,23 +1,23 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-      <h3 class="panel-title">
-          <h1 class="panel-title">Makes</h1>
-          
-          <kendo-autocomplete
-              [data]="filteredMakesAutocompleteValues"
-              [valueField]="'text'"
-              [placeholder]="'Search...'"
-              [filterable]="true"
-              (filterChange)="handleSearchFilter($event)"
-              (valueChange)="handleSearchFilter($event)">
-          </kendo-autocomplete>
-      </h3>
-  </div>
-  <div class="panel-body">
-      <div class="row" id="tiles">
-          <make-card class="col-md-4 col-sm-4 col-xs-12 tile"
-              *ngFor="let make of filteredMakes"
-              [make]="make" [routerLink]="['/make/' + make.Id]">
-          </make-card>
-      </div>
-  </div>
+    <div class="panel-heading">
+        <h3 class="row">
+            <h1 class="panel-title col-sm-8 col-xs-12">Makes</h1>
+            
+            <kendo-autocomplete class="col-sm-4 col-xs-12"
+                [data]="filteredMakesAutocompleteValues"
+                [valueField]="'text'"
+                [placeholder]="'Search...'"
+                [filterable]="true"
+                (filterChange)="handleSearchFilter($event)"
+                (valueChange)="handleSearchFilter($event)">
+            </kendo-autocomplete>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row" id="tiles">
+            <make-card class="col-md-4 col-sm-4 col-xs-12 tile"
+                *ngFor="let make of filteredMakes"
+                [make]="make" [routerLink]="['/make/' + make.Id]">
+            </make-card>
+        </div>
+    </div>
