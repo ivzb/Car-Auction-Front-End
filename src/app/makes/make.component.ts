@@ -1,9 +1,5 @@
-import { Component, OnInit, HostBinding } from '@angular/core'
-import { Router, ActivatedRoute, Params } from '@angular/router'
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
-import * as moment from 'moment'
-import 'rxjs/add/operator/pairwise'
-import 'rxjs/add/operator/switchMap'
+import { Component, OnInit } from '@angular/core'
+import { Router, ActivatedRoute } from '@angular/router'
 
 // models
 import { Make } from './make'
@@ -14,42 +10,7 @@ import { MakeService } from './make.service'
 import { LoadingBarService } from '../loading-bar.service'
 
 @Component({
-  template: `
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                <h1 class="panel-title" *ngIf="make">
-                    <a [routerLink]="['/makes']">Makes</a>
-                    /
-                    {{ make.Value }}
-                </h1>
-                
-                <kendo-autocomplete
-                    [data]="filteredModelsAutocompleteValues"
-                    [valueField]="'text'"
-                    [placeholder]="'Search...'"
-                    [filterable]="true"
-                    (filterChange)="handleSearchFilter($event)"
-                    (valueChange)="handleSearchFilter($event)">
-                </kendo-autocomplete>
-            </h3>
-        </div>
-        <div class="panel-body">
-            <div class="row" id="tiles" *ngIf="models">
-                <div class="col-md-4 col-sm-4 col-xs-12 tile"
-                    *ngFor="let model of filteredModels"
-                    [routerLink]="['/model/' + model.Id]">
-                    <div class="team-portrait block cursor-pointer">              
-                        <div class="title">
-                            <h2>{{ model.Value }}</h2>
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 *ngIf="models && models.length == 0">No models in category <b>{{ make.Value }}</b> found.</h3>
-            </div>
-        </div>
-  `,
+  templateUrl: 'make.template.html',
 })
 
 export class MakeComponent implements OnInit {

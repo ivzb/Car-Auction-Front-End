@@ -1,9 +1,5 @@
-import { Component, OnInit, HostBinding } from '@angular/core'
-import { Router, ActivatedRoute, Params } from '@angular/router'
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
-import * as moment from 'moment'
-import 'rxjs/add/operator/pairwise'
-import 'rxjs/add/operator/switchMap'
+import { Component, OnInit } from '@angular/core'
+import { Router, ActivatedRoute } from '@angular/router'
 
 // models
 import { Model } from './model'
@@ -14,43 +10,7 @@ import { ModelsService } from './models.service'
 import { LoadingBarService } from '../loading-bar.service'
 
 @Component({
-  template: `
-    <div *ngIf="model" class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                <a [routerLink]="['/makes']">Makes</a>
-                /
-                <a [routerLink]="['/make/' + model.Make.Id]">{{ model.Make.Value }}</a>
-                / 
-                {{ model.Value }}
-            </h3>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="list-group" *ngIf="cars">
-                        <li class="list-group-item cursor-pointer"
-                            *ngFor="let car of cars"
-                            [routerLink]="['/car/' + car.Id]">
-                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                                {{ car.AuctionOn | amDateFormat:'LL' }}
-                                ({{ car.AuctionOn | amTimeAgo }})
-                                |
-                                <b>{{ car.Title }}</b>
-                                (<i class="fa fa-cogs" aria-hidden="true"></i> {{ car.Engine }} cc, {{ car.Fuel.Value }})
-                        </li>
-
-                         <li *ngIf="showLoadMoreButton" class="load-more-button cursor-pointer">
-                            <div (click)="loadMoreCars()">Load more...</div>
-                        </li>
-                    </ul>
-                    
-                    <h3 *ngIf="cars && cars.length == 0">No car in category <b>{{ model.Value }}</b> found.</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-  `,
+  templateUrl: 'model.template.html',
   styles: [`
     .load-more-button {
       list-style: none;

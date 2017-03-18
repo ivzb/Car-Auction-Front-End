@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { Router, ActivatedRoute, Params } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar'
 
 // services
@@ -10,7 +10,8 @@ import { LoadingBarService } from './loading-bar.service'
   template: `
     <ng2-slim-loading-bar></ng2-slim-loading-bar>
     <navbar></navbar>
-    <router-outlet></router-outlet>`
+    <router-outlet></router-outlet>
+  `
 })
 export class AppComponent {
     

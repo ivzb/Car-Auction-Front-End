@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params, Event, NavigationEnd } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
-import { Observable } from 'rxjs/Observable';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // models
 import { Make } from './make'
@@ -15,31 +13,7 @@ import { LoadingBarService } from '../loading-bar.service'
 
 @Component({
   selector: 'makes-container',
-  template: `
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                <h1 class="panel-title">Makes</h1>
-                
-                <kendo-autocomplete
-                    [data]="filteredMakesAutocompleteValues"
-                    [valueField]="'text'"
-                    [placeholder]="'Search...'"
-                    [filterable]="true"
-                    (filterChange)="handleSearchFilter($event)"
-                    (valueChange)="handleSearchFilter($event)">
-                </kendo-autocomplete>
-            </h3>
-        </div>
-        <div class="panel-body">
-            <div class="row" id="tiles">
-                <make-card class="col-md-4 col-sm-4 col-xs-12 tile"
-                    *ngFor="let make of filteredMakes"
-                    [make]="make" [routerLink]="['/make/' + make.Id]">
-                </make-card>
-            </div>
-        </div>
-    `,
+  templateUrl: 'makes-container.template.html',
 })
 
 export class MakesContainerComponent implements OnInit {

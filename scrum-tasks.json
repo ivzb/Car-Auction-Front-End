@@ -28,12 +28,12 @@
 		{
 			'startedOn': null,
 			'doneOn': null,
-			'task': 'Extract components templates to .template files.'
+			'task': 'Visualise Make brands image.'
 		},
 		{
 			'startedOn': null,
 			'doneOn': null,
-			'task': 'Visualise Make brands image.'
+			'task': 'Fix search in responsive mode.'
 		},
 	],
 	'doing': [
@@ -98,6 +98,11 @@
 			'startedOn': '17/3/2017',
 			'doneOn': '17/3/2017',
 			'task': 'Fix bootstrap menu to toggle in responsive mode.'
+		},
+		{
+			'startedOn': '18/3/2017',
+			'doneOn': '18/3/2017',
+			'task': 'Extract components templates to .template files.'
 		},
 	]
 }
