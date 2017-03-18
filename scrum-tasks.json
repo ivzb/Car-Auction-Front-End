@@ -23,11 +23,6 @@
 		{
 			'startedOn': null,
 			'doneOn': null,
-			'task': 'Add cool loading application animation.'
-		},
-		{
-			'startedOn': null,
-			'doneOn': null,
 			'task': 'Visualise Make brands image.'
 		},
 	],
@@ -103,6 +98,11 @@
 			'startedOn': '18/3/2017',
 			'doneOn': '18/3/2017',
 			'task': 'Fix search in responsive mode.'
+		},
+		{
+			'startedOn': '18/3/2017',
+			'doneOn': '18/3/2017',
+			'task': 'Add cool loading application animation.'
 		},
 	]
 }
