@@ -17,8 +17,13 @@ export class MakeService {
     return this.baseService.get(`${ this.url }(${ id })`)
   }
 
-  getMakes() {
-    return this.baseService.get(`${ this.url }?$orderby=Value`)
+  getMakes(withImage: boolean) {
+    let filter = `ImageUrl ${ withImage ? 'ne' : 'eq' } null`
+    return this.baseService.get(`${ this.url }?$orderby=Value&$filter=${ filter }`)
+  }
+
+  getMakesWithoutImage() {
+    return this.baseService.get(`${ this.url }?$orderby=Value&$filter=ImageUrl eq null`)
   }
 
   getMakeModels(id: number) {

@@ -34,7 +34,7 @@ export class MakesContainerComponent implements OnInit {
       this.loadingBarService.incrementProgress(30)
 
       this.service
-        .getMakes()
+        .getMakes(true)
         .subscribe(makes => {
             this.loadingBarService.incrementProgress(30)
             this.makes = makes

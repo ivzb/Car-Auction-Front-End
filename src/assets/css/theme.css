@@ -557,12 +557,14 @@ label {
     
     -webkit-transition: .3s;
     transition: .3s;
-    background-color: #393e5a;
+    background-color: #299eff;
   }
-    .navbar a.navbar-brand:hover {
-      background-color: #30344d;
-    }
     
+    .navbar-inverse .navbar-brand:hover,
+    .navbar-inverse .navbar-brand:focus {
+      background-color: #299eff!important;
+    }
+
     .navbar a.navbar-brand i { 
       text-align: center;
       float: left;
@@ -1192,7 +1194,7 @@ label {
     bottom: 0;
     right: 0;
     text-align: center;
-    background-color: rgba(118,131,198,.8);
+    background-color: #299eff;
     border: 0px solid rgba(255,255,255,.2);
     
     -webkit-transition: .3s;
@@ -1203,9 +1205,9 @@ label {
     opacity: 0;
   }
     .overlay:hover {
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
-      filter: alpha(opacity=1);
-      opacity: 1;      
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.8)";
+      filter: alpha(opacity=0.8);
+      opacity: 0.8;      
     }
     .overlay i, .overlay span.title { 
       color: #fff; 
@@ -1357,6 +1359,7 @@ label {
     .team .row [class*="col-"]:hover .portrait { border-color: #fff; }
     .portrait img {
       width: 100%;
+      height: 200px;
     }
     .social-media {
       padding: 0 30px;
