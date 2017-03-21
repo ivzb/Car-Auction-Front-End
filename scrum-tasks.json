@@ -104,5 +104,10 @@
 			'doneOn': '19/3/2017',
 			'task': 'Visualise Make brands image.'
 		},
+		{
+			'startedOn': '21/3/2017',
+			'doneOn': '21/3/2017',
+			'task': 'Visualise Make brands without image.'
+		},
 	]
 }
