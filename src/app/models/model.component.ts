@@ -11,22 +11,6 @@ import { LoadingBarService } from '../loading-bar.service'
 
 @Component({
   templateUrl: 'model.template.html',
-  styles: [`
-    .load-more-button {
-      list-style: none;
-      display: block;
-      margin: 20px auto;
-      width: 150px;
-    }
-
-    .load-more-button div {
-      background: rgb(41, 158, 255);
-      padding: 10px 25px;
-      text-align: center;
-      font-weight: bold;
-      color: #fff;
-    }
-  `]
 })
 
 export class ModelComponent implements OnInit {

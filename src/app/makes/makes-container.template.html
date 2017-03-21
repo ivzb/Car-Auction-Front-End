@@ -20,4 +20,8 @@
                 [make]="make" [routerLink]="['/make/' + make.Id]">
             </make-card>
         </div>
+        
+        <li *ngIf="showLoadMoreButton" class="load-more-button cursor-pointer">
+            <div (click)="loadMakesWithoutImage()">Load more...</div>
+        </li>
     </div>

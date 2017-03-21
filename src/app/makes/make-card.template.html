@@ -4,7 +4,7 @@
     <!--<h3 class="italic">Developer</h3>-->
   </div>
   <div class="portrait">
-      <img src="{{ make.ImageUrl }}" alt="{{ make.Value }}">              
+      <img src="{{ make.ImageUrl }}" *ngIf="make.ImageUrl" alt="{{ make.Value }}">              
       <span class="overlay">
         <span class="valign"></span>
         <i class="icon-hand-up"></i>

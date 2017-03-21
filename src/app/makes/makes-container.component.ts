@@ -21,6 +21,7 @@ export class MakesContainerComponent implements OnInit {
     private filteredMakes: Make[]
     private makesAutocompleteValues: Array<{text: string, value: number}>
     private filteredMakesAutocompleteValues: Array<{text: string, value: number}>
+    private showLoadMoreButton: boolean
 
     constructor(
       private router: Router,
@@ -48,11 +49,35 @@ export class MakesContainerComponent implements OnInit {
             })
             this.filteredMakesAutocompleteValues = this.makesAutocompleteValues
             this.loadingBarService.completeProgress()
+            this.showLoadMoreButton = true
         })
     }
 
     handleSearchFilter(search: string) {
         this.filteredMakesAutocompleteValues = this.makesAutocompleteValues.filter((x) => x.text.toLowerCase().indexOf(search.toLowerCase()) !== -1)
         this.filteredMakes = this.makes.filter((x) => x.Value.toLowerCase().indexOf(search.toLowerCase()) !== -1)
+    }
+
+    private loadMakesWithoutImage() {
+        this.loadingBarService.startProgress()
+        this.loadingBarService.incrementProgress(30)
+
+        this.showLoadMoreButton = false
+        this.service
+            .getMakes(false)
+            .subscribe(makes => {
+                this.loadingBarService.incrementProgress(30)
+                this.makes.push(...makes)
+                this.filteredMakes = this.makes 
+
+                this.makesAutocompleteValues = []
+                let _that = this
+                this.makes.forEach(function callback(value: Make, index: number) {
+                    let autocompleteValue = { text: value.Value, value: value.Id }
+                    _that.makesAutocompleteValues.push(autocompleteValue)
+                })
+                this.filteredMakesAutocompleteValues = this.makesAutocompleteValues
+                this.loadingBarService.completeProgress()
+            })
     }
 }
